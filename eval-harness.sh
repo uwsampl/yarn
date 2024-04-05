@@ -1,8 +1,10 @@
 #!/bin/bash
 
 LM_EVALUATION_HARNESS_PATH="../lm-evaluation-harness"
-ARGS="--model=hf-causal-experimental --batch_size 2"
-MODEL_ARGS="use_accelerate=True,dtype=bfloat16,trust_remote_code=True"
+# ARGS="--model=hf-causal-experimental --batch_size 2"
+ARGS="--model=hf --batch_size 2"
+# MODEL_ARGS="use_accelerate=True,dtype=bfloat16,trust_remote_code=True"
+MODEL_ARGS="dtype=bfloat16,trust_remote_code=True"
 ARC="--tasks=arc_challenge --num_fewshot=25"
 HELLASWAG="--tasks=hellaswag --num_fewshot=10"
 TRUTHFULQA="--tasks=truthfulqa_mc --num_fewshot=0"
@@ -10,128 +12,128 @@ MMLU="--tasks=hendrycksTest-abstract_algebra,hendrycksTest-anatomy,hendrycksTest
 
 ### ARC-Challenge
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${ARC} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-64k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-64k-arc.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${ARC} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-128k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-128k-arc.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${ARC} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-64k-arc.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${ARC} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-64k-arc.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${ARC} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-128k-arc.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${ARC} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-128k-arc.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${ARC} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-64k-arc.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${ARC} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-64k-arc.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${ARC} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-128k-arc.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${ARC} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-128k-arc.json"
 
 ### Hellaswag
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${HELLASWAG} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-64k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-64k-hellaswag.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${HELLASWAG} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-128k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-128k-hellaswag.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${HELLASWAG} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-64k-hellaswag.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${HELLASWAG} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-64k-hellaswag.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${HELLASWAG} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-128k-hellaswag.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${HELLASWAG} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-128k-hellaswag.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${HELLASWAG} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-64k-hellaswag.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${HELLASWAG} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-64k-hellaswag.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${HELLASWAG} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-128k-hellaswag.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${HELLASWAG} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-128k-hellaswag.json"
 
 ### MMLU
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${MMLU} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-64k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-64k-mmlu.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${MMLU} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-128k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-128k-mmlu.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${MMLU} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-64k-mmlu.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${MMLU} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-64k-mmlu.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${MMLU} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-128k-mmlu.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${MMLU} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-128k-mmlu.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${MMLU} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-64k-mmlu.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${MMLU} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-64k-mmlu.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${MMLU} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-128k-mmlu.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${MMLU} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-128k-mmlu.json"
 
 ## TruthfulQA
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${TRUTHFULQA} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-64k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-64k-truthfulqa.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+python3 ${LM_EVALUATION_HARNESS_PATH}/lm_eval ${ARGS} \
     ${TRUTHFULQA} \
     --model_args="pretrained=NousResearch/Yarn-Llama-2-7b-128k,${MODEL_ARGS}" \
     --output_path="data/Yarn-Llama-2-7b-128k-truthfulqa.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${TRUTHFULQA} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-64k-truthfulqa.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${TRUTHFULQA} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-64k-truthfulqa.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${TRUTHFULQA} \
-    --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Llama-2-13b-128k-truthfulqa.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${TRUTHFULQA} \
+#     --model_args="pretrained=NousResearch/Yarn-Llama-2-13b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Llama-2-13b-128k-truthfulqa.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${TRUTHFULQA} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-64k-truthfulqa.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${TRUTHFULQA} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-64k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-64k-truthfulqa.json"
 
-python ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
-    ${TRUTHFULQA} \
-    --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
-    --output_path="data/Yarn-Mistral-7b-128k-truthfulqa.json"
+# python3 ${LM_EVALUATION_HARNESS_PATH}/main.py ${ARGS} \
+#     ${TRUTHFULQA} \
+#     --model_args="pretrained=NousResearch/Yarn-Mistral-7b-128k,${MODEL_ARGS}" \
+#     --output_path="data/Yarn-Mistral-7b-128k-truthfulqa.json"
